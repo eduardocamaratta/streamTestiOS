@@ -13,6 +13,7 @@ class ViewController: UIViewController, PlayerStatus {
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var coverImage: UIImageView!
     @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var imageButton: UIImageView!
 
     let player = Player()
 
@@ -32,6 +33,7 @@ class ViewController: UIViewController, PlayerStatus {
         self.songTitleLabel.isHidden = loading
         self.artistNameLabel.isHidden = loading
         self.coverImage.isHidden = loading
+        self.imageButton.isHidden = loading
     }
 
     // Fetches the current metadata and update the UI
@@ -60,12 +62,20 @@ class ViewController: UIViewController, PlayerStatus {
     }
 
 
+    @IBAction func playerButtonTapped(_ sender: Any) {
+        self.player.togglePlay()
+    }
+
     // --------------------------------------------------
     // MARK: Player Status Protocol
     // --------------------------------------------------
-    
+
     func metadataUpdated() {
         self.loading(true)
         self.updateMetadata()
+    }
+
+    func stateUpdated(playing: Bool) {
+        self.imageButton.image = UIImage(named: playing ? "pause" : "play")
     }
 }

@@ -22,4 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        if let rootVC = UIApplication.shared.keyWindow?.rootViewController as? PlayerStatus {
+            rootVC.metadataUpdated()
+        }
+    }
 }

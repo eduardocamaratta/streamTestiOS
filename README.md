@@ -15,4 +15,6 @@ A native iOS app (swift) that plays audio from a stream and shows the associated
 ## Pods Used
 
 - Alamofire
-- SwiftyJSON
+- SwiftyJSON*
+
+* By default it targets Swift 5.0, and this needs to be fixed in the Build Settings (Swift Language Version) before compiling the project.
